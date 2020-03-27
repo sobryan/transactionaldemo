@@ -24,6 +24,9 @@ class AppRunner {
 	@Scheduled(fixedRateString = "2000")
 //	public void run(String... args) throws Exception {
 	public void run() throws Exception {
+		bookingService.deleteAll();
+		notifyingService.deleteAll();
+		
 		
 		bookingService.book("Alice", "Bob", "Carol");
 		Assert.isTrue(bookingService.findAllBookings().size() == 3, "First booking should work with no problem");
